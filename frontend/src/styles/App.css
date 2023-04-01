@@ -1,31 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -43,11 +19,16 @@
   100%{background-position:0% 50%}
 }
 
+
+
 body{
+  font-family: 'Noto Sans', sans-serif;
+
   /*Dynamic gradient background code here*/
+
   background: linear-gradient(60deg, #030084, #015a81, #640099, #04785b);
   background-size: 2000% 2000%;
-  animation: GradientAnimation 8s ease infinite;
+  animation: GradientAnimation 16s ease infinite;
 }
 
 /* Login/Register Form style */

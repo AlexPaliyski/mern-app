@@ -1,7 +1,7 @@
 import '../styles/Navigation.css'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import {Button} from "react-bootstrap";
+import WatchlistButton from './WatchlistButton'
 
 function Navigation() {
     return (
@@ -11,7 +11,7 @@ function Navigation() {
                 <Navbar.Toggle />
 
                 <Navbar.Collapse className="justify-content-end">
-                    <Button variant={'primary'} className={'mx-4'}>Your Watchlist</Button>
+                    <WatchlistButton/>
                     <Navbar.Text>
                         <a>Account</a>
                     </Navbar.Text>

@@ -1,0 +1,13 @@
+/* Watchlist button style here */
+
+.gradient-button{
+    background: linear-gradient(60deg, #0300ab, #006e9f, #7500b7, #039d79);
+    background-size: 2000% 2000%;
+    animation: GradientAnimation 4s ease infinite;
+}
+
+@keyframes GradientAnimation {
+    0%{background-position: 0% 50%}
+    50%{background-position: 100% 50%}
+    100%{background-position:0% 50%}
+}
