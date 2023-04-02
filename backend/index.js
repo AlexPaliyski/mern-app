@@ -95,7 +95,7 @@ function generateSessionId(length) {
 
 
 ///////////////////////////////////////
-const filePath = "C:\\Users\\Martin\\WebstormProjects\\makalu-app\\backend\\video\\IMMERSIVE VR EXPERIENCE _ Man City 2-1 Liverpool.mp4";
+const filePath = join(__dirname, 'video/IMMERSIVE VR EXPERIENCE _ Man City 2-1 Liverpool.mp4');
 app.get("/videoplayer", (req, res) => {
     res.setHeader("content-type", "video/mp4");
 
