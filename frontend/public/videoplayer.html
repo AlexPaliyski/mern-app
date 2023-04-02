@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<a-scene>
+    <a-assets>
+        <video id="videoBunny" src="https://localhost:3000/videoplayer" width="160" height="90" autoplay loop="true" crossOrigin="anonymous" muted></video>
+    </a-assets>
+    <a-videosphere src="#videoBunny" autoplay="true" width="16" height="9" position="0 0 -20" rotation="0 -90 0"  play-on-click visible="false"></a-videosphere>
+    <!--
+    <a-entity material="shader: flat; src: #videoBunny" geometry="primitive: plane; width: 160; height: 90;" position="0 60 -250"  play-on-click visible="false">
+    </a-entity>
+    --->
+
+    <a-camera>
+        <a-entity position="0 0 -1.5" text="align: center;
+                width: 6;
+                wrapCount: 100;
+                color: black;
+                value: " >
+        </a-entity>
+    </a-camera>
+</a-scene>
+</body>
+</html>

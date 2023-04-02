@@ -6,6 +6,9 @@ const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 const {json} = require("express");
 const cors = require('cors');
+const fs = require("fs");
+var https = require("https");
+const {join} = require("path");
 
 const dayLength = 1000 * 24 * 60 *60;
 app.use(cors());
@@ -32,6 +35,9 @@ const isUserLoggedIn = (req, res, next) => {
     next()
     // throw Error('You are not logged in!')
 }
+app.get('/', isUserLoggedIn, (req, res) => {
+    res.sendFile(join(__dirname, '/index.html'))
+})
 
 // Roots
 app.get('/matches', isUserLoggedIn, (req, res) => {
@@ -73,7 +79,7 @@ app.listen(port, () => {
 });
 
 console.log("Passed from here");
-// seed_football_matches();
+//seed_football_matches();
 
 function generateSessionId(length) {
     let result = '';
@@ -86,6 +92,33 @@ function generateSessionId(length) {
     }
     return result;
 }
+
+
+///////////////////////////////////////
+const filePath = "C:\\Users\\Martin\\WebstormProjects\\makalu-app\\backend\\video\\IMMERSIVE VR EXPERIENCE _ Man City 2-1 Liverpool.mp4";
+app.get("/videoplayer", (req, res) => {
+    res.setHeader("content-type", "video/mp4");
+
+    fs.stat(filePath, (err, stat) => {
+        if (err) {
+            console.error(`File stat error for ${filePath}.`);
+            console.error(err);
+            res.sendStatus(500);
+            return;
+        }
+
+        res.setHeader("content-length", stat.size);
+
+        const fileStream = fs.createReadStream(filePath);
+        fileStream.on("error", error => {
+            console.log(`Error reading file ${filePath}.`);
+            console.log(error);
+            res.sendStatus(500);
+        });
+
+        fileStream.pipe(res)
+    });
+});
 /*console.log('aaaaaaaaaaaaaaa');
 const requestOptions = {
     method: 'POST',

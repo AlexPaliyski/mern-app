@@ -8,8 +8,8 @@ function LandingPage(){
 
     const navigate = useNavigate();
 
-    const navigateToLogin= () => {
-        navigate('Login');
+    const navigateToMatches= () => {
+        navigate('/Layout');
     }
 
     return(
@@ -20,11 +20,8 @@ function LandingPage(){
                     <img src={logo} className={"spin-img"}></img>
                     <h1 className={'firstPageHeader'}>LifeLens</h1>
                     <h2 className={"moto"}>Bringing the Stadium to your Home</h2>
-                    <Button variant="outline-light" className={"my-4 mx-3 btn-lg buttons-animation"} onClick={navigateToLogin}>
-                        Log in
-                    </Button>
-                    <Button variant="outline-light" className={"my-4 mx-3 btn-lg buttons-animation"}>
-                        Register
+                    <Button variant="outline-light" className={"my-4 mx-3 btn-lg buttons-animation"} onClick={navigateToMatches}>
+                        Watch Live!
                     </Button>
                 </center>
 

@@ -16,7 +16,7 @@ function Watchlist() {
                             <td>{match.homeTeam}</td>
                             <td>{match.awayTeam}</td>
                             <td>{match.startTime}</td>
-                            <td><Link to={'./VrVideoPlayer'} style={{textDecoration: "none", color:"white"}}>Watch</Link></td>
+                            <td><Link to={window.location.protocol + "//" + window.location.hostname + ":3000/"} style={{textDecoration: "none", color:"white"}}>Watch</Link></td>
                         </tr>)
                     })
                 console.log("x ", x)
