@@ -2,6 +2,7 @@ import '../styles/Navigation.css'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import WatchlistButton from './WatchlistButton'
+import logo from '../styles/lllogo-black.png'
 
 function Navigation() {
     return (
