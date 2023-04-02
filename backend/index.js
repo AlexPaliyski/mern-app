@@ -5,9 +5,10 @@ const { seed_football_matches, register, doesUserExists, getAllMatches} = requir
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 const {json} = require("express");
+const cors = require('cors');
 
 const dayLength = 1000 * 24 * 60 *60;
-
+app.use(cors());
 app.use(sessions({
     secret: generateSessionId(10),
     saveUninitialized:true,
@@ -29,7 +30,7 @@ const isUserLoggedIn = (req, res, next) => {
         next()
     }
     next()
-    //res.send('User is not logged in')
+    // throw Error('You are not logged in!')
 }
 
 // Roots
@@ -37,10 +38,14 @@ app.get('/matches', isUserLoggedIn, (req, res) => {
     res.send(JSON.stringify(getAllMatches()))
 })
 app.post('/login', (req, res) => {
+    console.log(req.body.username);
+    console.log(req.body.password);
     if (doesUserExists(req.body.username, req.body.password)) {
         req.session.user = req.body.username;
-        window.location.href="/";
-        res.send("Success");
+        res.redirect(req.session.user);
+    }
+    else {
+        throw Error('User with such username and password does not exists');
     }
 })
 app.post('/', (req, res) => {
@@ -48,10 +53,12 @@ app.post('/', (req, res) => {
     res.send(req.body)
 });
 app.post('/register', (req, res) => {
+    console.log(req.body.username);
+    console.log(req.body.password);
     try {
         register(req.body.username, req.body.password);
         req.session.user = req.body.username;
-        res.send('Success');
+        res.send(req.body.username);
     }
     catch(error) {
         res.send(error.message);
@@ -79,12 +86,12 @@ function generateSessionId(length) {
     }
     return result;
 }
-console.log('aaaaaaaaaaaaaaa');
+/*console.log('aaaaaaaaaaaaaaa');
 const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify( {username:'test', password:'123456'})
+    body: JSON.stringify( {username:'test2', password:'111111'})
 }
-    fetch('http://localhost:3000/register', requestOptions)
-    .then(x => console.log(x))
-    .catch(ex => console.log(ex));
+fetch('http://localhost:3000/login', requestOptions)
+    //.then(response => console.log(response))
+.catch(ex => console.log(ex));*/
